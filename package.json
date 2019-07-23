@@ -1,0 +1,25 @@
+{
+  "name": "react-boilerplate",
+  "version": "1.0.0",
+  "description": "simple react boilerplate",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest ./test"
+  },
+  "jest": {
+    "setupFilesAfterEnv": ["./test/enzyme.setup.js"]
+  },
+  "author": "heyitsmeharv",
+  "license": "ISC",
+  "dependencies": {
+    "@babel/cli": "^7.5.5",
+    "@babel/core": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "@babel/preset-react": "^7.0.0",
+    "enzyme": "^3.10.0",
+    "enzyme-adapter-react-16": "^1.14.0",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-test-renderer": "^16.8.6"
+  }
+}
