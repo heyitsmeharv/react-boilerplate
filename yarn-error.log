@@ -1,5 +1,5 @@
 Arguments: 
-  C:\Program Files\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js run lint
+  C:\Program Files\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js check-staged
 
 PATH: 
   C:\Program Files\Intel\iCLS Client\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Yarn\bin\;C:\Users\AdamHarvey\AppData\Roaming\nvm;C:\Program Files\nodejs;C:\Program Files\Git\bin\;C:\Python27\;C:\Program Files\PuTTY\;C:\Program Files\Amazon\AWSCLI\bin\;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\130\Tools\Binn\;C:\Program Files (x86)\Microsoft SQL Server\140\Tools\Binn\;C:\Program Files\Microsoft SQL Server\140\Tools\Binn\;C:\Program Files\Microsoft SQL Server\140\DTS\Binn\;C:\Program Files (x86)\Microsoft SQL Server\150\DTS\Binn\;C:\Users\AdamHarvey\AppData\Local\Microsoft\WindowsApps;C:\Users\AdamHarvey\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\AdamHarvey\AppData\Roaming\npm;C:\Users\AdamHarvey\AppData\Local\Yarn\bin;C:\Users\AdamHarvey\AppData\Roaming\nvm;C:\Program Files\nodejs
@@ -14,7 +14,7 @@ Platform:
   win32 x64
 
 Trace: 
-  SyntaxError: C:\Users\AdamHarvey\Desktop\Projects\react-boilerplate\package.json: Unexpected token } in JSON at position 331
+  SyntaxError: C:\Users\AdamHarvey\Desktop\Projects\react-boilerplate\package.json: Unexpected token / in JSON at position 613
       at JSON.parse (<anonymous>)
       at C:\Program Files (x86)\Yarn\lib\cli.js:1625:59
       at Generator.next (<anonymous>)
@@ -32,7 +32,8 @@ npm manifest:
       "build": "webpack --config webpack.prod.js",
       "start": "webpack-dev-server --config webpack.dev.js",
       "test": "jest ./test",
-      "lint": "eslint src -c .eslintrc.json --ext js,jsx",
+      "lint": "eslint src -c .eslintrc --ext js,jsx,json,scss",
+      "check-staged": "lint-staged"
     },
     "husky": {
       "hooks": {
@@ -40,9 +41,13 @@ npm manifest:
       }
     },
     "lint-staged": {
-      "src/**/*.{js,jsx}": [
-        "eslint",
-        "pretty-quick — staged",
+      "src/**/*.{js,jsx,json,scss}": [
+        "eslint src --fix",
+        "git add"
+      ],
+      "*.{js,jsx,json,scss}": [
+        "prettier --check",
+        // "prettier --write",
         "git add"
       ]
     },
@@ -87,8 +92,7 @@ npm manifest:
       "eslint-plugin-react": "^7.14.3",
       "husky": "^3.0.5",
       "lint-staged": "^9.2.5",
-      "prettier": "^1.18.2",
-      "pretty-quick": "^1.11.1"
+      "prettier": "^1.18.2"
     }
   }
 

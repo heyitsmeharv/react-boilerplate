@@ -7,7 +7,7 @@
     "build": "webpack --config webpack.prod.js",
     "start": "webpack-dev-server --config webpack.dev.js",
     "test": "jest ./test",
-    "lint": "eslint src -c .eslintrc --ext js,jsx",
+    "lint": "eslint src -c .eslintrc --ext js,jsx,json,scss",
     "lint-fix": "lint --fix",
     "check-staged": "lint-staged"
   },
@@ -17,10 +17,10 @@
     }
   },
   "lint-staged": {
-    "src/**/*.{js,jsx}": [
-      "eslint"
+    "src/**/*.{js,jsx,json,scss}": [
+      "eslint src --fix"
     ],
-    "src/**/*.{js,jsx,json,md}": [
+    "*.{js,jsx,json,scss}": [
       "prettier --list-different"
     ]
   },
