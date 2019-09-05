@@ -1,17 +1,17 @@
-const { CleanWebpackPlugin } = require('clean-webpack-plugin')
-const HtmlWebPackPlugin = require('html-webpack-plugin')
-const path = require('path')
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const HtmlWebPackPlugin = require('html-webpack-plugin');
+const path = require('path');
 
 const PATHS = {
   src: path.resolve(__dirname, 'src'),
   components: path.resolve(__dirname, 'src', 'components'),
   styles: path.resolve(__dirname, 'src', 'styles'),
   test: path.resolve(__dirname, 'src', 'test'),
-}
+};
 
 module.exports = {
   entry: {
-    main: './src/index.js'
+    main: './src/index.js',
   },
   output: {
     filename: '[name].[hash].js',
@@ -35,20 +35,24 @@ module.exports = {
       },
       {
         test: /\.s(a|c)ss$/,
-        use: [{
-          loader: 'style-loader'
-        }, {
-          loader: 'css-loader'
-        }, {
-          loader: 'sass-loader'
-        }],
-      }
-    ]
+        use: [
+          {
+            loader: 'style-loader',
+          },
+          {
+            loader: 'css-loader',
+          },
+          {
+            loader: 'sass-loader',
+          },
+        ],
+      },
+    ],
   },
   plugins: [
     new HtmlWebPackPlugin({
-      template: 'index.html'
+      template: 'index.html',
     }),
     new CleanWebpackPlugin(),
-  ]
-}
+  ],
+};
